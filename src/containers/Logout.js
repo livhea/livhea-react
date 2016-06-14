@@ -1,14 +1,14 @@
 /**
  * # Logout.js
- * 
  *
- * 
+ *
+ *
  */
 'use strict';
 /**
  * ## Imports
- * 
- * Redux 
+ *
+ * Redux
  */
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -22,7 +22,7 @@ import * as globalActions from '../reducers/global/globalActions';
 
 /**
  * Immutable
- */ 
+ */
 import {Map} from 'immutable';
 
 /**
@@ -37,9 +37,8 @@ import FormButton from '../components/FormButton';
 /**
  * The necessary React components
  */
-import React,
-{
-  Component,
+import React, { Component } from 'react';
+import {
   StyleSheet,
   View
 }
@@ -84,12 +83,12 @@ class Logout extends Component {
 
   /**
    * ### render
-   * Setup some default presentations and render 
+   * Setup some default presentations and render
    */
   render() {
-            
+
     let self = this;
-    
+
     let onButtonPress = () => {
 			this.props.actions.logout();
 		};

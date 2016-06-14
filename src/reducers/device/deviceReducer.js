@@ -17,7 +17,7 @@ import InitialState from './deviceInitialState';
 const {
   SET_PLATFORM,
   SET_VERSION
-} = require('../../lib/constants').default;
+} = require('../../framework/constants').default;
 
 const initialState = new InitialState;
 

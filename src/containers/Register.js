@@ -1,13 +1,13 @@
 /**
  * Register.js
- * 
- * Allow user to register 
+ *
+ * Allow user to register
  */
 'use strict';
 /**
  * ## Imports
- * 
- * Redux 
+ *
+ * Redux
  */
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -19,7 +19,7 @@ import * as authActions from '../reducers/auth/authActions';
 
 /**
  * Immutable
- */ 
+ */
 import {Map} from 'immutable';
 
 /**
@@ -28,15 +28,15 @@ import {Map} from 'immutable';
 import LoginRender from '../components/LoginRender';
 
 /**
- * The necessary React 
+ * The necessary React
  */
-import React from 'react-native';
+import React, { Component } from 'react';
 
 const {
-  LOGIN, 
+  LOGIN,
   REGISTER,
   FORGOT_PASSWORD
-} = require('../lib/constants').default;
+} = require('../framework/constants').default;
 
 /**
  * ## Redux boilerplate
@@ -67,7 +67,7 @@ function buttonPressHandler(signup, username, email, password) {
   signup (username, email, password);
 }
 
-let Register = React.createClass({
+class Register extends Component{
 
   render() {
 
@@ -78,15 +78,15 @@ let Register = React.createClass({
 					        this.props.auth.form.fields.email,
 					        this.props.auth.form.fields.password
 		                               );
-    
+
 
 
 
     return(
-      <LoginRender 
+      <LoginRender
           formType={ REGISTER }
           loginButtonText={ loginButtonText }
-          onButtonPress={ onButtonPress }				
+          onButtonPress={ onButtonPress }
           displayPasswordCheckbox ={ true }
           leftMessageType={ FORGOT_PASSWORD }
           rightMessageType={ LOGIN }
@@ -96,5 +96,6 @@ let Register = React.createClass({
 
     );
   }
-});
+}
+
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

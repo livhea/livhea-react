@@ -1,6 +1,6 @@
 module.exports = {
   backend: {
-    hapiRemote: true,
+    mean: true,
     hapiLocal: false
   }
 }

@@ -9,13 +9,13 @@
  *
  * React
  */
-const  React = require('react-native');
-const
+import  React, {Component} from 'react';
+import
 {
   StyleSheet,
   View
-} = React;
-  
+} from 'react-native';
+
 /**
  * The platform neutral button
  */
@@ -36,11 +36,11 @@ var styles = StyleSheet.create({
 
 });
 
-var FormButton = React.createClass({
+class FormButton extends Component{
   /**
    * ### render
    *
-   * Display the Button 
+   * Display the Button
    */
   render() {
     return (
@@ -54,6 +54,6 @@ var FormButton = React.createClass({
       </View>
     );
   }
-});
+}
 
 module.exports = FormButton;

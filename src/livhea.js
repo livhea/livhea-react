@@ -8,7 +8,8 @@
  *
  * Necessary components from ReactNative
  */
-import React, {
+import React,{ Component } from 'react';
+import {
   AppRegistry,
   Navigator,
   View,
@@ -19,10 +20,11 @@ import React, {
  *
  * Necessary components from Router-Flux
  */
-import RouterFlux, {
-  Route,
+import {
+  Router,
   Scene,
-  TabBar} from 'react-native-router-flux';
+  TabBar
+} from 'react-native-router-flux';
 
 /**
  * ### Redux
@@ -39,7 +41,7 @@ import {
  *  ```configureStore``` will connect the ```reducers```, the
  *
  */
-import configureStore from './lib/configureStore';
+import configureStore from './config/configRedux';
 
 
 /**
@@ -108,7 +110,7 @@ function getInitialState() {
 * Displays the icon for the tab w/ color dependent upon selection
 */
 
-class TabIcon extends React.Component {
+class TabIcon extends Component {
   render(){
     var color = this.props.selected ? '#FF3366' : '#FFB3B3';
     return (
@@ -131,13 +133,13 @@ class TabIcon extends React.Component {
 
 export default function native(platform) {
 
-  let LivHea = React.createClass( {
+  class LivHea extends Component {
     render() {
 
       const store = configureStore(getInitialState());
 
       //Connect w/ the Router
-      const Router = connect()(RouterFlux.Router);
+      const RNRouter = connect()(Router);
 
       // configureStore will combine reducers from livhea and main application
       // it will then create the store based on aggregate state from all reducers
@@ -148,7 +150,7 @@ export default function native(platform) {
       // setup the router table with App selected as the initial component
       return (
         <Provider store={store}>
-	  <Router hideNavBar={true}>
+	  <RNRouter hideNavBar={true}>
 	    <Scene key="root">
 	      <Scene key="App"
                      component={App}
@@ -200,14 +202,14 @@ export default function native(platform) {
                        component={Profile}/>
 	      </Scene>
 	    </Scene>
-	  </Router>
+	  </RNRouter>
         </Provider>
       );
     }
-  });
+  }
   /**
    * registerComponent to the AppRegistery and off we go....
    */
 
-  AppRegistry.registerComponent('livhea', () => LivHea);
+  AppRegistry.registerComponent('livhea_react', () => LivHea);
 }

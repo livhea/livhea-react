@@ -1,3 +1,6 @@
 rootProject.name = 'livhea_react'
 
 include ':app'
+
+include ':RNSimpleAlertDialogModule', ':app'
+project(':RNSimpleAlertDialogModule').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-simpledialog-android/android')
