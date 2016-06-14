@@ -30,8 +30,8 @@ import * as globalActions from '../reducers/global/globalActions';
 /**
  * The components we need from ReactNative
  */
-import React,
-{
+import React,{ Component } from 'react';
+import {
   StyleSheet,
   View,
   Text
@@ -83,7 +83,7 @@ var styles = StyleSheet.create({
     padding: 10
   },
   summary: {
-    fontFamily: 'BodoniSvtyTwoITCTT-Book',
+    //fontFamily: 'BodoniSvtyTwoITCTT-Book',
     fontSize: 18,
     fontWeight: 'bold'
   }
@@ -92,14 +92,14 @@ var styles = StyleSheet.create({
 /**
  * ## App class
  */
-let App = React.createClass({
+class App extends Component{
   /**
    * See if there's a sessionToken from a previous login
    *
    */
   componentDidMount() {
     this.props.actions.getSessionToken();
-  },
+  }
 
   render() {
     return(
@@ -108,7 +108,7 @@ let App = React.createClass({
       </View>
     );
   }
-});
+}
 
 /**
  * Connect the properties

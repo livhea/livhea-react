@@ -2,12 +2,12 @@
  * # Subview.js
  *
  *  This is called from main to demonstrate the back button
- *  
+ *
  */
 'use strict';
 /*
  * ## Imports
- *  
+ *
  * Imports from redux
  */
 import { bindActionCreators } from 'redux';
@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 
 /**
  * Immutable
- */ 
+ */
 import {Map} from 'immutable';
 
 /**
@@ -31,8 +31,8 @@ import NavigationBar from 'react-native-navbar';
 /**
  * The necessary components from React
  */
-import React,
-{ 	
+import React, { Component } from 'react';
+import {
   StyleSheet,
   View,
   Text
@@ -41,7 +41,7 @@ from 'react-native';
 
 /**
  * If your app uses Redux action creators, you can add them here...
- * 
+ *
  */
 const actions = [
 ];
@@ -92,18 +92,18 @@ var styles = StyleSheet.create({
 /**
  * ## Subview class
  */
-let Subview = React.createClass({
-  
+class Subview extends Component{
+
   render() {
     var titleConfig = {
       title: "Subview"
     };
-    
+
     var leftButtonConfig = {
       title: 'Back',
       handler: Actions.pop
     };
-    
+
     return(
       <View>
 	<NavigationBar
@@ -116,7 +116,7 @@ let Subview = React.createClass({
       </View>
     );
   }
-});
+}
 
 /**
  * Connect the properties

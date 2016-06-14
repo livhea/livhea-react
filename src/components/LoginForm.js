@@ -1,6 +1,6 @@
 /**
  * # LoginForm.js
- * 
+ *
  * This class utilizes the ```tcomb-form-native``` library and just
  * sets up the options required for the 3 states of Login, namely
  * Login, Register or Reset Password
@@ -12,19 +12,20 @@
  *
  * React
  */
-const React = require('react-native');
-const {
-  PropTypes
-} = React;
+import React, { Component } from 'react';
 
-/** 
+import {
+  PropTypes
+} from 'react-native';
+
+/**
  * States of login display
  */
 const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../lib/constants').default;
+} = require('../framework/constants').default;
 
 /**
  *  The fantastic little form library
@@ -32,7 +33,7 @@ const {
 const t = require('tcomb-form-native');
 let Form = t.form.Form;
 
-var LoginForm = React.createClass({
+class LoginForm extends Component{
   /**
    * ## LoginForm class
    *
@@ -40,27 +41,31 @@ var LoginForm = React.createClass({
    * * value: the values to set in the input fields
    * * onChange: function to call when user enters text
    */
-  propTypes: {
-    formType: PropTypes.string,
-    form: PropTypes.object,
-    value: PropTypes.object,
-    onChange: PropTypes.func
-  },
+   constructor(){
+     super();
+     this.propTypes = {
+       formType: PropTypes.string,
+       form: PropTypes.object,
+       value: PropTypes.object,
+       onChange: PropTypes.func
+     };
+   }
+
 
   /**
    * ## render
    *
    * setup all the fields using the props and default messages
-   * 
+   *
    */
   render() {
 
     let formType = this.props.formType;
-    
+
     let options = {
       auto: 'placeholders',
       fields: {
-        
+
       }
     };
 
@@ -71,7 +76,7 @@ var LoginForm = React.createClass({
       hasError: this.props.form.fields.usernameHasError,
       error: 'Must have 6-12 characters and/or numbers'
     };
-    
+
     let email = {
       label: 'Email',
       keyboardType: 'email-address',
@@ -131,7 +136,7 @@ var LoginForm = React.createClass({
       options.fields['username'] = username;
       options.fields['password'] = password;
       break;
-      
+
       /**
        * ### Reset password
        * The password reset form has only 1 field
@@ -158,7 +163,6 @@ var LoginForm = React.createClass({
 
     );
   }
-});
+}
 
 module.exports = LoginForm;
-

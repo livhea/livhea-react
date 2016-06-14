@@ -15,7 +15,7 @@ const {
   SET_STORE,
   SET_STATE,
   GET_STATE
-} = require('../../lib/constants').default;
+} = require('../../framework/constants').default;
 
 /**
  * ## set the sessionToken

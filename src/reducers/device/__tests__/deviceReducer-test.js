@@ -23,7 +23,7 @@ const {
   SET_PLATFORM,
   SET_VERSION,
   SET_STATE
-} = require('../../../lib/constants').default;
+} = require('../../../framework/constants').default;
 
 /**
  * ## Class under test

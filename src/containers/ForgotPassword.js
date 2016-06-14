@@ -1,12 +1,12 @@
 /**
  * # ForgotPassword.js
- * 
+ *
  */
 'use strict';
 /**
  * ## Imports
- * 
- * Redux 
+ *
+ * Redux
  */
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -18,7 +18,7 @@ import * as authActions from '../reducers/auth/authActions';
 
 /**
  * Immutable
- */ 
+ */
 import {Map} from 'immutable';
 
 /**
@@ -29,13 +29,13 @@ import LoginRender from '../components/LoginRender';
 /**
  * Need React
  */
-import React from 'react-native';
+import React, { Component } from 'react';
 
 const {
-  REGISTER, 
+  REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../lib/constants').default;
+} = require('../framework/constants').default;
 
 /**
   * ## Redux boilerplate
@@ -66,7 +66,7 @@ function buttonPressHandler(resetPassword, email) {
   resetPassword (email);
 }
 
-let ForgotPassword = React.createClass({
+class ForgotPassword extends Component {
 
   render() {
     let loginButtonText = 'Reset password';
@@ -76,7 +76,7 @@ let ForgotPassword = React.createClass({
 		                               );
 
     return(
-      <LoginRender 
+      <LoginRender
           formType={ FORGOT_PASSWORD }
           loginButtonText={ loginButtonText }
           onButtonPress={ onButtonPress }
@@ -88,6 +88,6 @@ let ForgotPassword = React.createClass({
       />
     );
   }
-});
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);

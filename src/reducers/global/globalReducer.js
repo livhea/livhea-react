@@ -24,7 +24,7 @@ const {
   SET_STATE,
   SET_STORE
   
-} = require('../../lib/constants').default;
+} = require('../../framework/constants').default;
 
 import InitialState from './globalInitialState';
 

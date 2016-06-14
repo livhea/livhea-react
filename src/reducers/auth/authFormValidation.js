@@ -1,7 +1,7 @@
 /**
  * # authFormValidation.js
- * 
- * This class determines only if the form is valid 
+ *
+ * This class determines only if the form is valid
  * so that the form button can be enabled.
  * if all the fields on the form are without error,
  * the form is considered valid
@@ -17,7 +17,7 @@ const {
   REGISTER,
   LOGIN,
   FORGOT_PASSWORD
-} = require('../../lib/constants').default;
+} = require('../../framework/constants').default;
 
 /**
  * ## formValidation
@@ -33,7 +33,7 @@ export default function formValidation (state) {
     return state.setIn(['form','isValid'],true);
     /**
      * ### Registration has 4 fields
-     */     
+     */
   case REGISTER:
     if (state.form.fields.username != ''
         &&
@@ -71,16 +71,16 @@ export default function formValidation (state) {
     }
     /**
      * ### Reset password has 1 field
-     */     
+     */
   case FORGOT_PASSWORD:
     if (state.form.fields.email !== ''
         &&
-        !state.form.fields.emailHasError){ 
+        !state.form.fields.emailHasError){
       return state.setIn(['form','isValid'],true);
     } else {
       return state.setIn(['form','isValid'],false);
     }
-    
+
   }
   /**
    * Default, return the state

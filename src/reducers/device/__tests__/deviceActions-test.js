@@ -14,8 +14,8 @@ jest.autoMockOff();
  *
  * We don't want to use the devices storage, nor actually call Parse.com
  */
-jest.mock('../../../lib/AppAuthToken');
-jest.mock('../../../lib/BackendFactory');
+jest.mock('../../../framework/AuthToken');
+jest.mock('../../../framework/BackendFactory');
 
 /**
  * ## Mock Store
@@ -40,7 +40,7 @@ var actions = require('../deviceActions');
 const {
   SET_PLATFORM,
   SET_VERSION
-} = require('../../../lib/constants').default;
+} = require('../../../framework/constants').default;
 
 /**
  * ## Tests
@@ -64,4 +64,3 @@ describe('deviceActions', () => {
     });
   });
 });
-

@@ -12,13 +12,13 @@
 /**
  * ## Mocks
  *
- * turn mocking off but mock AppAuthToken and Parse
+ * turn mocking off but mock AuthToken and Parse
  *
  */
 jest.autoMockOff();
 
-jest.mock('../../../lib/AppAuthToken');
-jest.mock('../../../lib/BackendFactory');
+jest.mock('../../../framework/AuthToken');
+jest.mock('../../../framework/BackendFactory');
 /**
  * ## Store
  * The mockStore will validate the actions are performed 
@@ -40,7 +40,7 @@ const {
 
   ON_PROFILE_FORM_FIELD_CHANGE
 
-} = require('../../../lib/constants').default;
+} = require('../../../framework/constants').default;
 
 /**
  * ## Tests

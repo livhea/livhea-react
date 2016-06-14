@@ -1,13 +1,13 @@
 /**
  * # authReducer-test.js
- * 
+ *
  * Test the authReducer's only function, like all reducers, where the
  * state and action are passed in.
  *
  * This will confirm that given a specific action with a type and
  * payload, that the state object is modified accordingly.
  *
- * *Note*: in this app,```state``` is an Immutable.js object 
+ * *Note*: in this app,```state``` is an Immutable.js object
  *
  */
 'use strict';
@@ -15,7 +15,7 @@
 jest.autoMockOff();
 /**
  * ## Imports
- * 
+ *
  * These actions are sufficient to test the reducer as many of the
  * case statements are shared amongst the actions.
  */
@@ -28,11 +28,11 @@ const {
   LOGIN,
   REGISTER,
   FORGOT_PASSWORD,
-  
+
   ON_AUTH_FORM_FIELD_CHANGE,
 
   SIGNUP_FAILURE
-} = require('../../../lib/constants').default;
+} = require('../../../framework/constants').default;
 
 /**
  * ## Class under test
@@ -44,13 +44,13 @@ const {
 const  authReducer = require('../authReducer').default;
 /**
  * ## Tests
- * 
+ *
  * authReducer
  */
 describe('authReducer', () => {
   /**
    * ### SessionToken ...all requests in general
-   * 
+   *
    * In general, all requests will have fetching true before
    * actually performing the request,and followed
    * by either a success or failure action that signals the request
@@ -71,7 +71,7 @@ describe('authReducer', () => {
       expect(next.form.isFetching).toBe(true);
       expect(next.form.error).toBe(null);
     });
-    
+
     it('finishes fetching on success', () => {
       const action = {
         type: SESSION_TOKEN_SUCCESS
@@ -81,7 +81,7 @@ describe('authReducer', () => {
       expect(next.form.isFetching).toBe(false);
       expect(next.form.error).toBe(null);
     });
-    
+
     it('finishes fetching on failure', () => {
       const action = {
         type: SESSION_TOKEN_FAILURE
@@ -96,7 +96,7 @@ describe('authReducer', () => {
 
   /**
    * ### Signup failure will have an error associated with it
-   * 
+   *
    */
   describe('SIGNUP_FAILURE', () => {
 
@@ -114,17 +114,17 @@ describe('authReducer', () => {
 
 
   });//SIGNUP_FAILURE
-  
+
   /**
    * ### The user logs out
-   * 
+   *
    */
   describe('LOGOUT', () => {
     let initialState = null;
     /**
      * #### Get a valid state
-     * 
-     */    
+     *
+     */
     beforeEach(() => {
       const action = {
         type: 'dummy'
@@ -150,7 +150,7 @@ describe('authReducer', () => {
      *
      * Even if the form were to have some data, once they log out that
      * form should be cleared, valid and in the Logged out state
-     * 
+     *
      */
     it('form is valid to logout even with form fields', () => {
       const action = {
@@ -174,7 +174,7 @@ describe('authReducer', () => {
   });
   /**
    * ### The user wants to reset their password
-   * 
+   *
    */
   describe('FORGOT_PASSWORD', () => {
     let initialState = null;
@@ -251,17 +251,17 @@ describe('authReducer', () => {
       expect(next.form.isValid).toBe(false);
     });
 
-  }); 
+  });
   /**
    * ### The user logs in
-   * 
+   *
    */
   describe('LOGIN', () => {
     let initialState = null;
     /**
      * #### Get a valid state
-     * 
-     */    
+     *
+     */
     beforeEach(() => {
       const action = {
         type: 'dummy'
@@ -270,9 +270,9 @@ describe('authReducer', () => {
     });
     /**
      * #### form is not valid with empty fields
-     * 
+     *
      * empty fields are not allowed
-     */        
+     */
     it('form is not valid with empty fields', () => {
       const action = {
         type: LOGIN
@@ -284,11 +284,11 @@ describe('authReducer', () => {
     });
     /**
      * #### form is  valid with valid fields
-     * 
+     *
      * provide valid input and the form should be valid
-     */        
+     */
     it('form is  valid with valid fields', () => {
-      
+
       const userNameFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
         payload: {field: 'username', value: 'barton'}
@@ -302,7 +302,7 @@ describe('authReducer', () => {
                                       userNameFieldChangeAction);
       let passwordState = authReducer(userNameState,
                                       passwordFieldChangeAction);
-      
+
       const action = {
         type: LOGIN
       };
@@ -315,12 +315,12 @@ describe('authReducer', () => {
     });
     /**
      * #### form is invalid with invalid fields
-     * 
+     *
      * If the fields are invalid, the fieldValidation and
      * formValidation will flag as such
-     */    
+     */
     it('form is invalid with invalid fields', () => {
-      
+
       const userNameFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
         payload: {field: 'username', value: 'bart'}
@@ -334,7 +334,7 @@ describe('authReducer', () => {
                                       userNameFieldChangeAction);
       let passwordState = authReducer(userNameState,
                                       passwordFieldChangeAction);
-      
+
       const action = {
         type: LOGIN
       };
@@ -349,14 +349,14 @@ describe('authReducer', () => {
   });//LOGIN
   /**
    * ### The user registers
-   * 
+   *
    */
   describe('REGISTER', () => {
     let initialState = null;
     /**
      * #### Get a valid state
-     * 
-     */    
+     *
+     */
     beforeEach(() => {
       const action = {
         type: 'dummy'
@@ -365,9 +365,9 @@ describe('authReducer', () => {
     });
     /**
      * #### form is not valid with empty fields
-     * 
+     *
      * no data, not valid
-     */        
+     */
     it('form is not valid with empty fields', () => {
       const action = {
         type: REGISTER
@@ -379,12 +379,12 @@ describe('authReducer', () => {
     });
     /**
      * #### form is  valid with valid fields
-     * 
+     *
      * The registration UI requires 4 valid fields before the form is
      * considered valid.
-     * 
+     *
      * Provide valid input and get a valid form
-     */        
+     */
     it('form is  valid with valid fields', () => {
       const userNameFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
@@ -411,7 +411,7 @@ describe('authReducer', () => {
                                       passwordFieldChangeAction);
       let passwordAgainState = authReducer(passwordState,
                                            passwordAgainFieldChangeAction);
-      
+
       const action = {
         type: REGISTER
       };
@@ -426,9 +426,9 @@ describe('authReducer', () => {
     });
     /**
      * #### form is  invalid with invalid field
-     * 
+     *
      * Bad data in, invalid form out!
-     */    
+     */
     it('form is  invalid with invalid fields', () => {
       const userNameFieldChangeAction = {
         type: ON_AUTH_FORM_FIELD_CHANGE,
@@ -455,7 +455,7 @@ describe('authReducer', () => {
                                       passwordFieldChangeAction);
       let passwordAgainState = authReducer(passwordState,
                                            passwordAgainFieldChangeAction);
-      
+
       const action = {
         type: REGISTER
       };
@@ -467,7 +467,7 @@ describe('authReducer', () => {
       expect(next.form.fields.passwordHasError).toBe(true);
       expect(next.form.fields.passwordAgainHasError).toBe(true);
       expect(next.form.isValid).toBe(false);
-      
+
     });
 
   });//REGISTER
