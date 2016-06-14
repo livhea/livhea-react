@@ -74,7 +74,7 @@ import {setStore} from './reducers/global/globalActions';
 
 /**
  * ## States
- * Snowflake explicitly defines initial state
+ * Explicitly defines initial state
  *
  */
 import authInitialState from './reducers/auth/authInitialState';
@@ -90,7 +90,7 @@ var VERSION='0.1.1';
 /**
  *
  * ## Initial state
- * Create instances for the keys of each structure in snowflake
+ * Create instances for the keys of each structure in livhea
  * @returns {Object} object with 4 keys
  */
 function getInitialState() {
@@ -131,7 +131,7 @@ class TabIcon extends React.Component {
 
 export default function native(platform) {
 
-  let Snowflake = React.createClass( {
+  let LivHea = React.createClass( {
     render() {
 
       const store = configureStore(getInitialState());
@@ -139,7 +139,7 @@ export default function native(platform) {
       //Connect w/ the Router
       const Router = connect()(RouterFlux.Router);
 
-      // configureStore will combine reducers from snowflake and main application
+      // configureStore will combine reducers from livhea and main application
       // it will then create the store based on aggregate state from all reducers
       store.dispatch(setPlatform(platform));
       store.dispatch(setVersion(VERSION));
