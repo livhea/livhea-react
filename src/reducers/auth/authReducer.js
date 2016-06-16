@@ -57,7 +57,9 @@ const initialState = new InitialState;
  * @param {Object} action - type and payload
  */
 export default function authReducer(state = initialState, action) {
+  console.log(state);
   if (!(state instanceof InitialState)) return initialState.mergeDeep(state);
+  console.log(initialState);
 
   switch (action.type) {
     /**
