@@ -32,6 +32,7 @@ import * as globalActions from '../reducers/global/globalActions';
  */
 import React,{ Component } from 'react';
 import {
+  Image,
   StyleSheet,
   View,
   Text
@@ -84,7 +85,7 @@ var styles = StyleSheet.create({
   },
   summary: {
     //fontFamily: 'BodoniSvtyTwoITCTT-Book',
-    fontSize: 18,
+    fontSize: 25,
     fontWeight: 'bold'
   }
 });
@@ -104,7 +105,7 @@ class App extends Component{
   render() {
     return(
       <View style={ styles.container }>
-	<Text style={ styles.summary }>LivHea</Text>
+	      <Image source={require('../../assets/img/logo.png')}/>
       </View>
     );
   }

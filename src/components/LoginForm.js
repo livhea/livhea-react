@@ -12,11 +12,10 @@
  *
  * React
  */
-import React, { Component } from 'react';
-
-import {
+import React, {
+  Component,
   PropTypes
-} from 'react-native';
+ } from 'react';
 
 /**
  * States of login display
@@ -34,24 +33,6 @@ const t = require('tcomb-form-native');
 let Form = t.form.Form;
 
 class LoginForm extends Component{
-  /**
-   * ## LoginForm class
-   *
-   * * form: the properties to set into the UI form
-   * * value: the values to set in the input fields
-   * * onChange: function to call when user enters text
-   */
-   constructor(){
-     super();
-     this.propTypes = {
-       formType: PropTypes.string,
-       form: PropTypes.object,
-       value: PropTypes.object,
-       onChange: PropTypes.func
-     };
-   }
-
-
   /**
    * ## render
    *
@@ -164,5 +145,19 @@ class LoginForm extends Component{
     );
   }
 }
+
+/**
+ * ## LoginForm class
+ *
+ * * form: the properties to set into the UI form
+ * * value: the values to set in the input fields
+ * * onChange: function to call when user enters text
+ */
+ LoginForm.propTypes = {
+   formType: PropTypes.string,
+   form: PropTypes.object,
+   value: PropTypes.object,
+   onChange: PropTypes.func
+ };
 
 module.exports = LoginForm;

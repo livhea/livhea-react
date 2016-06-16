@@ -23,11 +23,13 @@
  *
  * React
 */
-import  React, {Component} from 'react';
+import  React, {
+  Component,
+  PropTypes
+ } from 'react';
 
-import  {
+import {
   Image,
-  PropTypes,
   StyleSheet,
   Text,
   TextInput,
@@ -69,32 +71,13 @@ class Header extends Component{
    * ## Header.class
    * set the initial state of having the button be disabled.
    */
-
-  constructor(){
-    /**
-     * ### propTypes
-     * * isFetching: display the spinner if true
-     * * showState: should the JSON state, currentState, be displayed
-     * * currentState: the JSON state
-     * * onGetState: the action to call to get the current state
-     * * onSetState: the action to call to set the state
-     */
-     super();
-      this.propTypes = {
-        isFetching: PropTypes.bool,
-        showState: PropTypes.bool,
-        currentState: PropTypes.object,
-        onGetState: PropTypes.func,
-        onSetState: PropTypes.func
-      };
-  }
-
-  getInitialState() {
-    return {
-      text: '',
-      isDisabled: true
-    };
-  }
+   constructor(props){
+     super(props);
+     this.state = {
+       text: '',
+       isDisabled: true
+     };
+   }
 
   /**
    * ### _onPressMark
@@ -185,5 +168,21 @@ class Header extends Component{
     );
   }
 }
+
+/**
+ * ### propTypes
+ * * isFetching: display the spinner if true
+ * * showState: should the JSON state, currentState, be displayed
+ * * currentState: the JSON state
+ * * onGetState: the action to call to get the current state
+ * * onSetState: the action to call to set the state
+ */
+Header.propTypes = {
+ isFetching: PropTypes.bool,
+ showState: PropTypes.bool,
+ currentState: PropTypes.object,
+ onGetState: PropTypes.func,
+ onSetState: PropTypes.func
+};
 
 module.exports = Header;
