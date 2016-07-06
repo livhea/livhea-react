@@ -1,5 +1,6 @@
 'use strict';
 
-import livhea from './src/livhea';
+const {AppRegistry} = require('react-native');
+const init = require('./src/init');
 
-livhea('android');
+AppRegistry.registerComponent('livhea_react_mark2', init);
