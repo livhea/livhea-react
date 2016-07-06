@@ -78,15 +78,12 @@ function mapDispatchToProps(dispatch) {
 
 var styles = StyleSheet.create({
   container: {
-    borderTopWidth: 2,
-    borderBottomWidth:2,
-    marginTop: 80,
-    padding: 10
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  summary: {
-    //fontFamily: 'BodoniSvtyTwoITCTT-Book',
-    fontSize: 25,
-    fontWeight: 'bold'
+  tagline: {
+    color: "#000000"
   }
 });
 
@@ -106,6 +103,7 @@ class App extends Component{
     return(
       <View style={ styles.container }>
 	      <Image source={require('../../assets/img/logo.png')}/>
+        <Text style={styles.tagline}>Your own Health and Wellness experts</Text>
       </View>
     );
   }

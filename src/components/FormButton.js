@@ -26,12 +26,12 @@ const  Button = require('apsl-react-native-button');
  */
 var styles = StyleSheet.create({
   signin: {
-    marginLeft: 10,
-    marginRight: 10
+    marginLeft: 30,
+    marginRight: 30
   },
   button: {
-    backgroundColor: '#FF3366',
-    borderColor:  '#FF3366'
+    backgroundColor: '#1AA770',
+    borderColor:  '#1AA770'
   }
 
 });

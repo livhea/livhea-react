@@ -157,9 +157,7 @@ class Header extends Component{
 
           <TouchableHighlight onPress={this._onPressMark}>
 
-            <Image style={styles.mark} source={{uri:
-                                                'http://i.imgur.com/da4G0Io.png'}}
-            />
+            <Image source={require('../../assets/img/logo.png')}/>
           </TouchableHighlight>
           {spinner}
         </View>
